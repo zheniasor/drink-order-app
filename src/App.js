@@ -4,6 +4,9 @@ import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import CartPage from './pages/CartPage';
 import ProductPage from './pages/ProductPage';
+import CheckoutPage from './pages/CheckoutPage';
+import OrderConfirmationPage from './pages/OrderConfirmationPage';
+import ProfilePage from './pages/ProfilePage';
 import './styles/global.css';
 
 function App() {
@@ -12,12 +15,19 @@ function App() {
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
-  // Сохранение корзины в localStorage
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) {
+      return JSON.parse(savedUser);
+    }
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    return isLoggedIn ? { name: 'Гость' } : null;
+  });
+
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  // Добавление товара в корзину
   const addToCart = (drink) => {
     setCart(prevCart => {
       const existingItem = prevCart.find(item => item.id === drink.id);
@@ -32,12 +42,10 @@ function App() {
     });
   };
 
-  // Удаление товара из корзины
   const removeFromCart = (id) => {
     setCart(prevCart => prevCart.filter(item => item.id !== id));
   };
 
-  // Обновление количества товара
   const updateQuantity = (id, newQuantity) => {
     if (newQuantity <= 0) {
       removeFromCart(id);
@@ -50,14 +58,18 @@ function App() {
     );
   };
 
-  // Подсчёт общей суммы
   const getTotalPrice = () => {
-    return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    return total.toFixed(2);
   };
 
-  // Подсчёт количества товаров в корзине
   const getCartCount = () => {
     return cart.reduce((sum, item) => sum + item.quantity, 0);
+  };
+
+  const clearCart = () => {
+    setCart([]);
+    localStorage.removeItem('cart');
   };
 
   return (
@@ -76,6 +88,24 @@ function App() {
               getTotalPrice={getTotalPrice}
             />
           } 
+        />
+        <Route 
+          path="/checkout" 
+          element={
+            <CheckoutPage 
+              cart={cart}
+              getTotalPrice={getTotalPrice}
+              clearCart={clearCart}
+            />
+          } 
+        />
+        <Route 
+          path="/order-confirmation" 
+          element={<OrderConfirmationPage />} 
+        />
+        <Route 
+          path="/profile" 
+          element={<ProfilePage user={user} setUser={setUser} />} 
         />
       </Routes>
     </Router>

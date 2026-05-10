@@ -1,16 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FiShoppingCart, FiUser } from 'react-icons/fi';
 
 function Header({ cartCount }) {
   return (
     <header style={styles.header}>
       <Link to="/" style={styles.logo}>
-        DrinkOrder
+        Drinkly
       </Link>
 
       <div style={styles.icons}>
-        <Link to="/cart" style={styles.cartIcon}>
-          🛒
+        <Link to="/profile" style={styles.iconLink}>
+          <FiUser size={22} color="white" />
+        </Link>
+        <Link to="/cart" style={styles.iconLink}>
+          <FiShoppingCart size={22} color="white" />
           {cartCount > 0 && <span style={styles.cartCount}>{cartCount}</span>}
         </Link>
       </div>
@@ -23,28 +27,30 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: "15px 30px",
+    padding: "16px 32px",
     backgroundColor: "#6F4E37",
     color: "white",
     position: "sticky",
     top: 0,
     zIndex: 100,
-    boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+    boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
   },
   logo: {
-    fontSize: "24px",
-    fontWeight: "bold",
+    fontSize: "28px",
+    fontWeight: 700,
     textDecoration: "none",
     color: "white",
+    letterSpacing: "-0.5px",
   },
   icons: {
     display: "flex",
-    gap: "20px",
+    gap: "24px",
+    alignItems: "center",
   },
-  cartIcon: {
-    fontSize: "24px",
+  iconLink: {
+    display: "flex",
+    alignItems: "center",
     textDecoration: "none",
-    color: "white",
     position: "relative",
   },
   cartCount: {
@@ -55,8 +61,10 @@ const styles = {
     color: "white",
     borderRadius: "50%",
     padding: "2px 6px",
-    fontSize: "12px",
+    fontSize: "11px",
     fontWeight: "bold",
+    minWidth: "18px",
+    textAlign: "center",
   },
 };
 

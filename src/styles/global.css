@@ -5,27 +5,55 @@
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fafafa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #FAFAFA;
   color: #333;
-}
-
-button:hover {
-  opacity: 0.9;
-  transform: scale(1.02);
+  line-height: 1.5;
 }
 
 button {
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 
-/* Адаптивность для мобильных устройств */
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Адаптивность */
 @media (max-width: 768px) {
   .container {
-    padding: 10px;
+    padding: 16px;
   }
 
   .grid {
     grid-template-columns: 1fr !important;
   }
+  
+  .checkout-wrapper {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Стили для скроллбара */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F0F0F0;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6F4E37;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5A3D2B;
 }
