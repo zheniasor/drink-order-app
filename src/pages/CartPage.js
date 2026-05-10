@@ -20,11 +20,19 @@ function CartPage({ cart, removeFromCart, updateQuantity, getTotalPrice }) {
     <div style={styles.container}>
       <h1 style={styles.title}>Корзина</h1>
 
-      <div style={styles.cartContent}>
-        <div style={styles.cartItems}>
+      <div className="cart-content" style={styles.cartContent}>
+        <div className="cart-items" style={styles.cartItems}>
           {cart.map((item) => (
-            <div key={item.id} style={styles.cartItem}>
-              <img src={item.image} alt={item.name} style={styles.itemImage} />
+            <div key={item.id} className="cart-item" style={styles.cartItem}>
+              <img 
+                src={item.image} 
+                alt={item.name} 
+                style={styles.itemImage}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "https://via.placeholder.com/70x70?text=Нет+фото";
+                }}
+              />
 
               <div style={styles.itemInfo}>
                 <h3 style={styles.itemName}>{item.name}</h3>
@@ -37,7 +45,7 @@ function CartPage({ cart, removeFromCart, updateQuantity, getTotalPrice }) {
                 </p>
               </div>
 
-              <div style={styles.itemControls}>
+              <div className="item-controls" style={styles.itemControls}>
                 <button
                   onClick={() => updateQuantity(item.id, item.quantity - 1)}
                   style={styles.quantityBtn}
@@ -66,7 +74,7 @@ function CartPage({ cart, removeFromCart, updateQuantity, getTotalPrice }) {
           ))}
         </div>
 
-        <div style={styles.summary}>
+        <div className="summary" style={styles.summary}>
           <h3 style={styles.summaryTitle}>Итого заказа</h3>
           <div style={styles.summaryRow}>
             <span>Товаров:</span>
@@ -93,6 +101,7 @@ const styles = {
     maxWidth: "1200px",
     margin: "0 auto",
     padding: "24px",
+    overflowX: "hidden",
   },
   title: {
     fontSize: "32px",
@@ -145,15 +154,18 @@ const styles = {
     padding: "20px",
     borderBottom: "1px solid #EEE",
     gap: "16px",
+    flexWrap: "wrap",
   },
   itemImage: {
     width: "70px",
     height: "70px",
     objectFit: "cover",
     borderRadius: "12px",
+    flexShrink: 0,
   },
   itemInfo: {
     flex: 1,
+    minWidth: "120px",
   },
   itemName: {
     fontSize: "16px",
@@ -179,6 +191,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     gap: "12px",
+    flexShrink: 0,
   },
   quantityBtn: {
     width: "32px",
@@ -210,6 +223,7 @@ const styles = {
     textAlign: "right",
     fontWeight: 600,
     color: "#6F4E37",
+    flexShrink: 0,
   },
   summary: {
     backgroundColor: "#F9F9F9",
@@ -261,5 +275,67 @@ const styles = {
     transition: "all 0.2s ease",
   },
 };
+
+const styleSheet = document.createElement("style");
+styleSheet.textContent = `
+  @media (max-width: 768px) {
+    /* Основной контейнер */
+    .cart-content {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 24px !important;
+    }
+    
+    /* Список товаров */
+    .cart-items {
+      width: 100% !important;
+    }
+    
+    /* Каждый товар — в столбик */
+    .cart-item {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 12px !important;
+    }
+    
+    /* Картинка */
+    .cart-item img {
+      width: 80px !important;
+      height: 80px !important;
+      margin-bottom: 8px;
+    }
+    
+    /* Информация о товаре */
+    .item-info {
+      width: 100% !important;
+    }
+    
+    /* Блок с кнопками + - и удаления */
+    .item-controls {
+      width: 100% !important;
+      justify-content: flex-start !important;
+    }
+    
+    /* Итоговая цена за позицию */
+    .item-total {
+      width: 100% !important;
+      text-align: left !important;
+    }
+    
+    /* Блок итого заказа */
+    .summary {
+      width: 100% !important;
+      position: static !important;
+      margin-top: 0;
+    }
+    
+    /* Кнопки на всю ширину */
+    .checkout-btn, .continue-btn {
+      width: 100% !important;
+      text-align: center;
+    }
+  }
+`;
+document.head.appendChild(styleSheet);
 
 export default CartPage;

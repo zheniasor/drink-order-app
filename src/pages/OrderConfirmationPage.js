@@ -114,7 +114,7 @@ function OrderConfirmationPage() {
                       : {}),
                   }}
                 >
-                  🍳
+                  <FiClock size={20} />
                 </span>
                 <span style={styles.progressStepLabel}>Готовится</span>
               </div>
@@ -140,7 +140,7 @@ function OrderConfirmationPage() {
                       : {}),
                   }}
                 >
-                  🎉
+                  <FiCheckCircle size={20} />
                 </span>
                 <span style={styles.progressStepLabel}>Готов</span>
               </div>
@@ -239,10 +239,10 @@ function OrderConfirmationPage() {
 
         <div style={styles.actions}>
           <button onClick={() => navigate("/")} style={styles.homeButton}>
-            🏠 Вернуться на главную
+            Вернуться на главную
           </button>
           <button onClick={() => navigate("/")} style={styles.newOrderButton}>
-            🍹 Сделать новый заказ
+            Сделать новый заказ
           </button>
         </div>
 
@@ -342,7 +342,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    fontSize: "20px",
+    color: "#666",
   },
   progressStepIconActive: {
     backgroundColor: "#6F4E37",
@@ -437,8 +437,9 @@ const styles = {
   },
   itemCustom: {
     fontSize: "11px",
-    color: "#888",
+    color: "#6F4E37",
     display: "block",
+    marginTop: "2px",
   },
   itemQuantity: {
     flex: 0.5,

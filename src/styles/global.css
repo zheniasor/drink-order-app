@@ -24,7 +24,6 @@ button:active {
   transform: translateY(0);
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
   .container {
     padding: 16px;
@@ -39,7 +38,6 @@ button:active {
   }
 }
 
-/* Стили для скроллбара */
 ::-webkit-scrollbar {
   width: 6px;
 }

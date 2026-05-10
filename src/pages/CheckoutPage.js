@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FiUser, FiMapPin, FiMessageSquare, FiArrowLeft } from 'react-icons/fi';
+import { FiUser, FiMapPin, FiMessageSquare, FiArrowLeft } from "react-icons/fi";
 
 function CheckoutPage({ cart, getTotalPrice, clearCart }) {
   const navigate = useNavigate();
@@ -94,14 +94,21 @@ function CheckoutPage({ cart, getTotalPrice, clearCart }) {
   ];
 
   return (
-    <div style={styles.container}>
+    <div className="checkout-container" style={styles.container}>
       <h1 style={styles.title}>Оформление заказа</h1>
 
-      <div style={styles.checkoutWrapper}>
-        <form onSubmit={handleSubmit} style={styles.form}>
+      <div className="checkout-wrapper" style={styles.checkoutWrapper}>
+        <form
+          onSubmit={handleSubmit}
+          className="form-block"
+          style={styles.form}
+        >
           <div style={styles.section}>
             <h3 style={styles.sectionTitle}>
-              <FiUser size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+              <FiUser
+                size={18}
+                style={{ marginRight: "8px", verticalAlign: "middle" }}
+              />
               Контактные данные
             </h3>
 
@@ -146,7 +153,10 @@ function CheckoutPage({ cart, getTotalPrice, clearCart }) {
 
           <div style={styles.section}>
             <h3 style={styles.sectionTitle}>
-              <FiMapPin size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+              <FiMapPin
+                size={18}
+                style={{ marginRight: "8px", verticalAlign: "middle" }}
+              />
               Точка самовывоза
             </h3>
 
@@ -169,7 +179,10 @@ function CheckoutPage({ cart, getTotalPrice, clearCart }) {
 
           <div style={styles.section}>
             <h3 style={styles.sectionTitle}>
-              <FiMessageSquare size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+              <FiMessageSquare
+                size={18}
+                style={{ marginRight: "8px", verticalAlign: "middle" }}
+              />
               Комментарий к заказу
             </h3>
 
@@ -187,7 +200,7 @@ function CheckoutPage({ cart, getTotalPrice, clearCart }) {
           </div>
         </form>
 
-        <div style={styles.summary}>
+        <div className="summary-block" style={styles.summary}>
           <h3 style={styles.summaryTitle}>Ваш заказ</h3>
 
           <div style={styles.itemsList}>
@@ -196,7 +209,9 @@ function CheckoutPage({ cart, getTotalPrice, clearCart }) {
                 <div style={styles.summaryItemInfo}>
                   <span style={styles.summaryItemName}>{item.name}</span>
                   {item.customization && (
-                    <span style={styles.summaryItemCustom}>✓ {item.customization}</span>
+                    <span style={styles.summaryItemCustom}>
+                      ✓ {item.customization}
+                    </span>
                   )}
                 </div>
                 <span style={styles.summaryItemPrice}>
@@ -218,7 +233,7 @@ function CheckoutPage({ cart, getTotalPrice, clearCart }) {
           </button>
 
           <button onClick={() => navigate("/cart")} style={styles.backButton}>
-            <FiArrowLeft size={16} style={{ marginRight: '8px' }} />
+            <FiArrowLeft size={16} style={{ marginRight: "8px" }} />
             Вернуться в корзину
           </button>
         </div>
@@ -232,6 +247,7 @@ const styles = {
     maxWidth: "1200px",
     margin: "0 auto",
     padding: "24px",
+    overflowX: "hidden",
   },
   title: {
     fontSize: "32px",
@@ -403,22 +419,51 @@ const styles = {
   },
 };
 
-// Медиа-запрос для адаптивности
 const styleSheet = document.createElement("style");
 styleSheet.textContent = `
   @media (max-width: 768px) {
-    .checkout-wrapper {
-      grid-template-columns: 1fr !important;
+    /* Контейнер */
+    .checkout-container {
+      padding: 16px !important;
     }
+    
+    /* Основная сетка — в столбик */
+    .checkout-wrapper {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 20px !important;
+    }
+    
+    /* Форма сверху */
     .form-block {
       order: 0 !important;
       width: 100% !important;
+      padding: 20px !important;
     }
+    
+    /* Блок с заказом снизу */
     .summary-block {
       order: 1 !important;
       width: 100% !important;
       position: static !important;
-      margin-top: 20px;
+      margin-top: 0;
+      padding: 20px !important;
+    }
+    
+    /* Кнопки на всю ширину */
+    .submit-button, .back-button {
+      width: 100% !important;
+    }
+    
+    /* Заголовок */
+    h1 {
+      font-size: 28px !important;
+      margin-bottom: 24px !important;
+    }
+    
+    /* Отступы секций */
+    .form-section {
+      margin-bottom: 24px !important;
     }
   }
 `;

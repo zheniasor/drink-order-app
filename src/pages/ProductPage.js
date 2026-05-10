@@ -68,7 +68,7 @@ function ProductPage({ addToCart }) {
     setSyrups((prev) =>
       prev.includes(syrupId)
         ? prev.filter((id) => id !== syrupId)
-        : [...prev, syrupId],
+        : [...prev, syrupId]
     );
   };
 
@@ -81,7 +81,7 @@ function ProductPage({ addToCart }) {
       customizationText.push(milkPrices[milkType].name);
     if (syrups.length > 0) {
       const syrupNames = syrups.map(
-        (s) => syrupOptions.find((opt) => opt.id === s)?.name,
+        (s) => syrupOptions.find((opt) => opt.id === s)?.name
       );
       customizationText.push(`сиропы: ${syrupNames.join(", ")}`);
     }
@@ -120,12 +120,13 @@ function ProductPage({ addToCart }) {
         ← Назад
       </button>
 
-      <div style={styles.productContent}>
-        <div style={styles.imageSection}>
+      {/* Добавлены классы для адаптивности */}
+      <div className="product-content" style={styles.productContent}>
+        <div className="image-section" style={styles.imageSection}>
           <img src={drink.image} alt={drink.name} style={styles.image} />
         </div>
 
-        <div style={styles.infoSection}>
+        <div className="info-section" style={styles.infoSection}>
           <h1 style={styles.name}>{drink.name}</h1>
           <p style={styles.description}>{drink.description}</p>
           <p style={styles.composition}>
@@ -138,7 +139,7 @@ function ProductPage({ addToCart }) {
 
             <div style={styles.optionGroup}>
               <label style={styles.optionLabel}>Размер порции:</label>
-              <div style={styles.sizeButtons}>
+              <div className="size-buttons" style={styles.sizeButtons}>
                 {Object.entries(sizePrices).map(([key, value]) => (
                   <button
                     key={key}
@@ -157,7 +158,7 @@ function ProductPage({ addToCart }) {
 
             <div style={styles.optionGroup}>
               <label style={styles.optionLabel}>Тип молока:</label>
-              <div style={styles.milkButtons}>
+              <div className="milk-buttons" style={styles.milkButtons}>
                 {Object.entries(milkPrices).map(([key, value]) => (
                   <button
                     key={key}
@@ -178,7 +179,7 @@ function ProductPage({ addToCart }) {
 
             <div style={styles.optionGroup}>
               <label style={styles.optionLabel}>Сиропы:</label>
-              <div style={styles.syrupButtons}>
+              <div className="syrup-buttons" style={styles.syrupButtons}>
                 {syrupOptions.map((syrup) => (
                   <button
                     key={syrup.id}
@@ -199,7 +200,7 @@ function ProductPage({ addToCart }) {
 
             <div style={styles.optionGroup}>
               <label style={styles.optionLabel}>Температура:</label>
-              <div style={styles.tempButtons}>
+              <div className="temp-buttons" style={styles.tempButtons}>
                 <button
                   onClick={() => setTemperature("hot")}
                   style={{
@@ -223,7 +224,7 @@ function ProductPage({ addToCart }) {
 
             <div style={styles.optionGroup}>
               <label style={styles.optionLabel}>Добавки:</label>
-              <div style={styles.extrasButtons}>
+              <div className="extras-buttons" style={styles.extrasButtons}>
                 <button
                   onClick={() => setExtraShot(!extraShot)}
                   style={{
@@ -259,7 +260,7 @@ function ProductPage({ addToCart }) {
             </div>
           </div>
 
-          <div style={styles.footer}>
+          <div className="footer" style={styles.footer}>
             <div style={styles.totalPrice}>
               Итого:{" "}
               <span style={styles.totalPriceValue}>
@@ -578,4 +579,5 @@ styleSheet.textContent = `
   }
 `;
 document.head.appendChild(styleSheet);
+
 export default ProductPage;

@@ -8,17 +8,14 @@ function HomePage({ addToCart }) {
   const [sortBy, setSortBy] = useState('default');
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Фильтрация напитков по категории
   const filteredByCategory = selectedCategory === 'all' 
     ? drinks 
     : drinks.filter(drink => drink.category === selectedCategory);
 
-  // Фильтрация по поисковому запросу
   const filteredBySearch = filteredByCategory.filter(drink =>
     drink.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Сортировка напитков
   const sortedDrinks = [...filteredBySearch];
   if (sortBy === 'price-asc') {
     sortedDrinks.sort((a, b) => a.price - b.price);
@@ -33,7 +30,7 @@ function HomePage({ addToCart }) {
         <p style={styles.bannerText}>Выберите из более чем 20 видов кофе, чая и других напитков</p>
       </div>
 
-      {/* Панель поиска */}
+      {}
       <div style={styles.searchPanel}>
         <div style={styles.searchContainer}>
           <FiSearch size={20} color="#999" style={styles.searchIcon} />
@@ -55,7 +52,7 @@ function HomePage({ addToCart }) {
         </div>
       </div>
 
-      {/* Панель фильтрации и сортировки */}
+      {}
       <div style={styles.filterPanel}>
         <div style={styles.categories}>
           {categories.map(cat => (
@@ -83,14 +80,14 @@ function HomePage({ addToCart }) {
         </select>
       </div>
 
-      {/* Результаты поиска */}
+      {}
       {searchQuery && (
         <div style={styles.searchResultsInfo}>
           Найдено {sortedDrinks.length} напитков по запросу «{searchQuery}»
         </div>
       )}
 
-      {/* Сетка карточек напитков */}
+      {}
       {sortedDrinks.length === 0 ? (
         <div style={styles.noResults}>
           <p>Ничего не найдено</p>

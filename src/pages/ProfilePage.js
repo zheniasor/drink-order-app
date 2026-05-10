@@ -15,15 +15,12 @@ function ProfilePage({ user, setUser }) {
   const [isEditing, setIsEditing] = useState(false);
   const [favoriteDrinks, setFavoriteDrinks] = useState([]);
 
-  // Загрузка данных при монтировании
   useEffect(() => {
-    // Загружаем заказы из localStorage
     const savedOrders = localStorage.getItem("orders");
     if (savedOrders) {
       setOrders(JSON.parse(savedOrders));
     }
 
-    // Загружаем данные пользователя из localStorage или используем пропс
     const savedUser = localStorage.getItem("user");
     if (savedUser) {
       const userData = JSON.parse(savedUser);
@@ -40,14 +37,12 @@ function ProfilePage({ user, setUser }) {
       });
     }
 
-    // Загружаем избранные напитки
     const savedFavorites = localStorage.getItem("favorites");
     if (savedFavorites) {
       setFavoriteDrinks(JSON.parse(savedFavorites));
     }
   }, [user]);
 
-  // Сохранение данных пользователя
   const handleSaveProfile = () => {
     localStorage.setItem("user", JSON.stringify(formData));
     if (setUser) {
@@ -57,34 +52,27 @@ function ProfilePage({ user, setUser }) {
     alert("Данные сохранены!");
   };
 
-  // Выход из аккаунта
   const handleLogout = () => {
-    if (window.confirm("Вы уверены, что хотите выйти?")) {
-      localStorage.removeItem("user");
-      localStorage.removeItem("isLoggedIn");
-      if (setUser) {
-        setUser(null);
-      }
-      navigate("/");
+    localStorage.removeItem("user");
+    localStorage.removeItem("isLoggedIn");
+    if (setUser) {
+      setUser(null);
     }
+    navigate("/");
   };
 
-  // Повтор заказа
   const repeatOrder = (order) => {
-    // Сохраняем заказ в корзину (имитация)
     localStorage.setItem("cart", JSON.stringify(order.items));
     alert("Заказ добавлен в корзину!");
     navigate("/cart");
   };
 
-  // Удаление из избранного
   const removeFavorite = (drinkId) => {
     const newFavorites = favoriteDrinks.filter((d) => d.id !== drinkId);
     setFavoriteDrinks(newFavorites);
     localStorage.setItem("favorites", JSON.stringify(newFavorites));
   };
 
-  // Форматирование даты
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleString("ru-RU", {
       day: "2-digit",
@@ -95,7 +83,6 @@ function ProfilePage({ user, setUser }) {
     });
   };
 
-  // Если пользователь не авторизован
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
   if (!isLoggedIn && !user) {
@@ -175,7 +162,7 @@ function ProfilePage({ user, setUser }) {
         </button>
       </div>
 
-      {/* Вкладка: История заказов */}
+      {}
       {activeTab === "orders" && (
         <div style={styles.tabContent}>
           {orders.length === 0 ? (
@@ -242,7 +229,7 @@ function ProfilePage({ user, setUser }) {
         </div>
       )}
 
-      {/* Вкладка: Мои данные */}
+      {}
       {activeTab === "details" && (
         <div style={styles.tabContent}>
           <div style={styles.profileCard}>
@@ -328,7 +315,7 @@ function ProfilePage({ user, setUser }) {
         </div>
       )}
 
-      {/* Вкладка: Избранное */}
+      {}
       {activeTab === "favorites" && (
         <div style={styles.tabContent}>
           {favoriteDrinks.length === 0 ? (
