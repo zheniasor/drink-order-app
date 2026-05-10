@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/drink-order-app/static/css/main.bea9aedd.css",
+    "main.js": "/drink-order-app/static/js/main.618647d7.js",
+    "index.html": "/drink-order-app/index.html",
+    "main.bea9aedd.css.map": "/drink-order-app/static/css/main.bea9aedd.css.map",
+    "main.618647d7.js.map": "/drink-order-app/static/js/main.618647d7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bea9aedd.css",
+    "static/js/main.618647d7.js"
+  ]
+}
