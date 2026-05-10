@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { drinks } from "../data/menuData";
-import { FaFire, FaSnowflake, FaIceCream } from 'react-icons/fa';
-import { GiCoffeeBeans } from 'react-icons/gi';
+import { FaFire, FaSnowflake, FaIceCream } from "react-icons/fa";
+import { GiCoffeeBeans } from "react-icons/gi";
 
 function ProductPage({ addToCart }) {
   const { id } = useParams();
@@ -20,13 +20,17 @@ function ProductPage({ addToCart }) {
 
   const sizePrices = {
     small: {
-      price: drink.price - 1.5,
+      price: drink?.price - 1.5 || 0,
       label: "Маленький (0.2 л)",
       volume: "0.2",
     },
-    medium: { price: drink.price, label: "Средний (0.3 л)", volume: "0.3" },
+    medium: {
+      price: drink?.price || 0,
+      label: "Средний (0.3 л)",
+      volume: "0.3",
+    },
     large: {
-      price: drink.price + 2.0,
+      price: (drink?.price || 0) + 2.0,
       label: "Большой (0.4 л)",
       volume: "0.4",
     },
@@ -48,6 +52,7 @@ function ProductPage({ addToCart }) {
   ];
 
   const calculateTotalPrice = () => {
+    if (!drink) return 0;
     let total = sizePrices[size].price;
     if (milkType !== "regular") total += milkPrices[milkType].price;
     syrups.forEach((syrup) => {
@@ -61,16 +66,23 @@ function ProductPage({ addToCart }) {
 
   const toggleSyrup = (syrupId) => {
     setSyrups((prev) =>
-      prev.includes(syrupId) ? prev.filter((id) => id !== syrupId) : [...prev, syrupId]
+      prev.includes(syrupId)
+        ? prev.filter((id) => id !== syrupId)
+        : [...prev, syrupId],
     );
   };
 
   const handleAddToCart = () => {
+    if (!drink) return;
+
     const customizationText = [];
     if (size !== "medium") customizationText.push(sizePrices[size].label);
-    if (milkType !== "regular") customizationText.push(milkPrices[milkType].name);
+    if (milkType !== "regular")
+      customizationText.push(milkPrices[milkType].name);
     if (syrups.length > 0) {
-      const syrupNames = syrups.map((s) => syrupOptions.find((opt) => opt.id === s)?.name);
+      const syrupNames = syrups.map(
+        (s) => syrupOptions.find((opt) => opt.id === s)?.name,
+      );
       customizationText.push(`сиропы: ${syrupNames.join(", ")}`);
     }
     if (temperature === "cold") customizationText.push("со льдом");
@@ -156,7 +168,9 @@ function ProductPage({ addToCart }) {
                     }}
                   >
                     {value.name}
-                    {value.price > 0 && <span style={styles.extraPrice}>+{value.price} Br</span>}
+                    {value.price > 0 && (
+                      <span style={styles.extraPrice}>+{value.price} Br</span>
+                    )}
                   </button>
                 ))}
               </div>
@@ -171,7 +185,9 @@ function ProductPage({ addToCart }) {
                     onClick={() => toggleSyrup(syrup.id)}
                     style={{
                       ...styles.syrupButton,
-                      ...(syrups.includes(syrup.id) ? styles.syrupButtonActive : {}),
+                      ...(syrups.includes(syrup.id)
+                        ? styles.syrupButtonActive
+                        : {}),
                     }}
                   >
                     {syrup.name}
@@ -191,7 +207,7 @@ function ProductPage({ addToCart }) {
                     ...(temperature === "hot" ? styles.tempButtonActive : {}),
                   }}
                 >
-                  <FaFire style={{ marginRight: '8px' }} /> Горячий
+                  <FaFire style={{ marginRight: "8px" }} /> Горячий
                 </button>
                 <button
                   onClick={() => setTemperature("cold")}
@@ -200,7 +216,7 @@ function ProductPage({ addToCart }) {
                     ...(temperature === "cold" ? styles.tempButtonActive : {}),
                   }}
                 >
-                  <FaSnowflake style={{ marginRight: '8px' }} /> Со льдом
+                  <FaSnowflake style={{ marginRight: "8px" }} /> Со льдом
                 </button>
               </div>
             </div>
@@ -215,7 +231,8 @@ function ProductPage({ addToCart }) {
                     ...(extraShot ? styles.extraButtonActive : {}),
                   }}
                 >
-                  <GiCoffeeBeans style={{ marginRight: '8px' }} /> Доп. шот эспрессо +2.00 Br
+                  <GiCoffeeBeans style={{ marginRight: "8px" }} /> Доп. шот
+                  эспрессо +2.00 Br
                 </button>
                 <button
                   onClick={() => setWhippedCream(!whippedCream)}
@@ -224,7 +241,8 @@ function ProductPage({ addToCart }) {
                     ...(whippedCream ? styles.extraButtonActive : {}),
                   }}
                 >
-                  <FaIceCream style={{ marginRight: '8px' }} /> Взбитые сливки +1.50 Br
+                  <FaIceCream style={{ marginRight: "8px" }} /> Взбитые сливки
+                  +1.50 Br
                 </button>
               </div>
             </div>
@@ -243,7 +261,10 @@ function ProductPage({ addToCart }) {
 
           <div style={styles.footer}>
             <div style={styles.totalPrice}>
-              Итого: <span style={styles.totalPriceValue}>{calculateTotalPrice()} Br</span>
+              Итого:{" "}
+              <span style={styles.totalPriceValue}>
+                {calculateTotalPrice()} Br
+              </span>
             </div>
             <button onClick={handleAddToCart} style={styles.addToCartButton}>
               Добавить в корзину
@@ -418,6 +439,7 @@ const styles = {
   tempButtons: {
     display: "flex",
     gap: "12px",
+    flexWrap: "wrap",
   },
   tempButton: {
     padding: "10px 24px",
@@ -497,4 +519,63 @@ const styles = {
   },
 };
 
+// Адаптивность для мобильных устройств
+const styleSheet = document.createElement("style");
+styleSheet.textContent = `
+  @media (max-width: 768px) {
+    /* Меняем две колонки на одну */
+    .product-content {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 24px !important;
+    }
+    
+    /* Картинка сверху */
+    .image-section {
+      order: 0 !important;
+      padding: 16px !important;
+    }
+    
+    .image-section img {
+      max-width: 280px !important;
+      margin: 0 auto;
+      display: block;
+    }
+    
+    /* Информация и настройки снизу */
+    .info-section {
+      order: 1 !important;
+    }
+    
+    /* Центрируем заголовок и описание */
+    .name {
+      text-align: center !important;
+      font-size: 28px !important;
+    }
+    
+    .description, .composition, .calories {
+      text-align: center !important;
+    }
+    
+    /* Центрируем кнопки настроек */
+    .size-buttons, .milk-buttons, .syrup-buttons, 
+    .temp-buttons, .extras-buttons {
+      justify-content: center !important;
+    }
+    
+    /* Кнопка добавления под ценой */
+    .footer {
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 16px !important;
+      text-align: center;
+    }
+    
+    .add-to-cart-button {
+      width: 100% !important;
+      max-width: 280px;
+    }
+  }
+`;
+document.head.appendChild(styleSheet);
 export default ProductPage;
