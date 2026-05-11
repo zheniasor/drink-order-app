@@ -405,7 +405,7 @@ export const drinks = [
     name: "Какао",
     price: 6.5,
     volume: 0.3,
-    description: "Ароматный какао с молоком",
+    description: "Ароматный какао с молоком и маршмэллоу",
     image: "/img/cocoa.png",
     category: "coffee",
     composition: "Какао-порошок, молоко, сахар",
