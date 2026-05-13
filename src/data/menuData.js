@@ -1,3 +1,41 @@
+import latte from "../img/latte.png";
+import capuccino from "../img/capuccino.png";
+import americano from "../img/americano.png";
+import espresso from "../img/espresso.png";
+import doubleEspresso from "../img/double-espresso.png";
+import raf from "../img/raf.png";
+import mocca from "../img/mocca.png";
+import flatwhite from "../img/flatwhite.png";
+import latteMacchiato from "../img/latte-macchiato.png";
+import glasse from "../img/glasse.png";
+import ristretto from "../img/ristretto.png";
+import cortado from "../img/cortado.png";
+import matcha from "../img/matcha.png";
+import blackTea from "../img/black-tea.png";
+import greenTeaJasmine from "../img/green-tea-jasmine.png";
+import hibiscus from "../img/hibiscus.png";
+import gingerTea from "../img/ginger-tea.png";
+import seaBuckthorn from "../img/sea-buckthorn.png";
+import oolong from "../img/oolong.png";
+import rooibos from "../img/rooibos.png";
+import strawberrySmoothie from "../img/strawberry-smoothie.png";
+import bananaSmoothie from "../img/banana-smoothie.png";
+import greenSmoothie from "../img/green-smoothie.png";
+import mangoSmoothie from "../img/mango-smoothie.png";
+import blueberrySmoothie from "../img/blueberry-smoothie.png";
+import mohito from "../img/mohito.png";
+import lemonade from "../img/lemonade.png";
+import raspberryLemonade from "../img/raspberry-lemonade.png";
+import strawberryLemonade from "../img/strawberry-lemonade.png";
+import peachIcetea from "../img/peach-icetea.png";
+import lemonIcetea from "../img/lemon-icetea.png";
+import orangeJuice from "../img/orange-juice.png";
+import appleJuice from "../img/apple-juice.png";
+import milkshake from "../img/milkshake.png";
+import chocolateMilkshake from "../img/chocolate-milkshake.png";
+import hotChocolate from "../img/hot-chocolate.png";
+import cocoa from "../img/cocoa.png";
+
 export const drinks = [
   {
     id: 1,
@@ -6,7 +44,7 @@ export const drinks = [
     volume: 0.3,
     description:
       "Нежный кофейный напиток с большим количеством вспененного молока",
-    image: "/img/latte.png",
+    image: latte,
     category: "coffee",
     composition: "Эспрессо, молоко, молочная пена",
     calories: 120,
@@ -17,7 +55,7 @@ export const drinks = [
     price: 8.0,
     volume: 0.3,
     description: "Классический итальянский кофе с пышной молочной пеной",
-    image: "/img/capuccino.png",
+    image: capuccino,
     category: "coffee",
     composition: "Эспрессо, молоко, молочная пена",
     calories: 110,
@@ -28,7 +66,7 @@ export const drinks = [
     price: 6.5,
     volume: 0.3,
     description: "Эспрессо, разбавленный горячей водой для более мягкого вкуса",
-    image: "/img/americano.png",
+    image: americano,
     category: "coffee",
     composition: "Эспрессо, вода",
     calories: 15,
@@ -40,7 +78,7 @@ export const drinks = [
     volume: 0.05,
     description:
       "Классический концентрированный кофе с насыщенным вкусом и ароматом",
-    image: "/img/espresso.png",
+    image: espresso,
     category: "coffee",
     composition: "100% арабика",
     calories: 5,
@@ -51,7 +89,7 @@ export const drinks = [
     price: 6.0,
     volume: 0.1,
     description: "Двойная порция насыщенного эспрессо для настоящих ценителей",
-    image: "/img/double-espresso.png",
+    image: doubleEspresso,
     category: "coffee",
     composition: "Двойной эспрессо",
     calories: 10,
@@ -62,7 +100,7 @@ export const drinks = [
     price: 8.5,
     volume: 0.3,
     description: "Нежный кофейный напиток со сливками и ванильным сахаром",
-    image: "/img/raf.png",
+    image: raf,
     category: "coffee",
     composition: "Эспрессо, сливки, ванильный сахар",
     calories: 180,
@@ -74,7 +112,7 @@ export const drinks = [
     volume: 0.3,
     description:
       "Кофейный напиток с добавлением шоколадного сиропа и взбитых сливок",
-    image: "/img/mocca.png",
+    image: mocca,
     category: "coffee",
     composition: "Эспрессо, молоко, шоколадный сироп, взбитые сливки",
     calories: 220,
@@ -86,7 +124,7 @@ export const drinks = [
     volume: 0.3,
     description:
       "Австралийский кофе с двойной порцией эспрессо и тонким слоем молочной пены",
-    image: "/img/flatwhite.png",
+    image: flatwhite,
     category: "coffee",
     composition: "Двойной эспрессо, молоко",
     calories: 100,
@@ -97,7 +135,7 @@ export const drinks = [
     price: 8.5,
     volume: 0.3,
     description: "Слоистый кофейный напиток с добавлением молочной пены",
-    image: "/img/latte-macchiato.png",
+    image: latteMacchiato,
     category: "coffee",
     composition: "Молоко, эспрессо, молочная пена",
     calories: 130,
@@ -108,7 +146,7 @@ export const drinks = [
     price: 9.5,
     volume: 0.3,
     description: "Освежающий кофейный напиток с шариком ванильного мороженого",
-    image: "/img/glasse.png",
+    image: glasse,
     category: "coffee",
     composition: "Эспрессо, ванильное мороженое",
     calories: 200,
@@ -120,7 +158,7 @@ export const drinks = [
     volume: 0.025,
     description:
       "Самый концентрированный и насыщенный кофе, короткая порция эспрессо",
-    image: "/img/ristretto.png",
+    image: ristretto,
     category: "coffee",
     composition: "Эспрессо (короткая порция)",
     calories: 3,
@@ -131,7 +169,7 @@ export const drinks = [
     price: 7.0,
     volume: 0.2,
     description: "Испанский кофе с равными частями эспрессо и молока",
-    image: "/img/cortado.png",
+    image: cortado,
     category: "coffee",
     composition: "Эспрессо, молоко",
     calories: 80,
@@ -142,7 +180,7 @@ export const drinks = [
     price: 10.0,
     volume: 0.3,
     description: "Японский чай матча с молоком, тонизирующий и полезный",
-    image: "/img/matcha.png",
+    image: matcha,
     category: "tea",
     composition: "Чай матча, молоко",
     calories: 150,
@@ -153,7 +191,7 @@ export const drinks = [
     price: 4.5,
     volume: 0.3,
     description: "Классический чёрный чай с насыщенным вкусом и ароматом",
-    image: "/img/black-tea.png",
+    image: blackTea,
     category: "tea",
     composition: "Чёрный чай, вода",
     calories: 5,
@@ -164,7 +202,7 @@ export const drinks = [
     price: 5.0,
     volume: 0.3,
     description: "Нежный зелёный чай с ароматом цветов жасмина",
-    image: "/img/green-tea-jasmine.png",
+    image: greenTeaJasmine,
     category: "tea",
     composition: "Зелёный чай, жасмин, вода",
     calories: 5,
@@ -175,7 +213,7 @@ export const drinks = [
     price: 5.5,
     volume: 0.3,
     description: "Кисловатый красный чай из цветков гибискуса",
-    image: "/img/hibiscus.png",
+    image: hibiscus,
     category: "tea",
     composition: "Гибискус, вода",
     calories: 10,
@@ -186,7 +224,7 @@ export const drinks = [
     price: 6.5,
     volume: 0.3,
     description: "Согревающий напиток с имбирём, мёдом и лимоном",
-    image: "/img/ginger-tea.png",
+    image: gingerTea,
     category: "tea",
     composition: "Имбирь, мёд, лимон, вода",
     calories: 60,
@@ -197,7 +235,7 @@ export const drinks = [
     price: 7.0,
     volume: 0.3,
     description: "Витаминный напиток из облепихи с апельсином",
-    image: "/img/sea-buckthorn.png",
+    image: seaBuckthorn,
     category: "tea",
     composition: "Облепиха, апельсин, мёд, вода",
     calories: 80,
@@ -208,7 +246,7 @@ export const drinks = [
     price: 6.0,
     volume: 0.3,
     description: "Китайский полуферментированный чай с молочным ароматом",
-    image: "/img/oolong.png",
+    image: oolong,
     category: "tea",
     composition: "Чай улун, вода",
     calories: 5,
@@ -219,7 +257,7 @@ export const drinks = [
     price: 5.0,
     volume: 0.3,
     description: "Африканский травяной чай без кофеина",
-    image: "/img/rooibos.png",
+    image: rooibos,
     category: "tea",
     composition: "Ройбуш, вода",
     calories: 5,
@@ -230,7 +268,7 @@ export const drinks = [
     price: 7.0,
     volume: 0.4,
     description: "Освежающий напиток из свежих ягод с йогуртом",
-    image: "/img/strawberry-smoothie.png",
+    image: strawberrySmoothie,
     category: "smoothie",
     composition: "Клубника, банан, йогурт",
     calories: 200,
@@ -241,7 +279,7 @@ export const drinks = [
     price: 6.5,
     volume: 0.4,
     description: "Нежный банановый смузи с молоком",
-    image: "/img/banana-smoothie.png",
+    image: bananaSmoothie,
     category: "smoothie",
     composition: "Банан, молоко, мёд",
     calories: 180,
@@ -252,7 +290,7 @@ export const drinks = [
     price: 8.0,
     volume: 0.4,
     description: "Полезный смузи из шпината, яблока и сельдерея",
-    image: "/img/green-smoothie.png",
+    image: greenSmoothie,
     category: "smoothie",
     composition: "Шпинат, яблоко, сельдерей, банан",
     calories: 140,
@@ -263,7 +301,7 @@ export const drinks = [
     price: 8.5,
     volume: 0.4,
     description: "Тропический смузи из манго и маракуйи",
-    image: "/img/mango-smoothie.png",
+    image: mangoSmoothie,
     category: "smoothie",
     composition: "Манго, маракуйя, йогурт",
     calories: 190,
@@ -274,7 +312,7 @@ export const drinks = [
     price: 7.5,
     volume: 0.4,
     description: "Ягодный смузи из черники и голубики",
-    image: "/img/blueberry-smoothie.png",
+    image: blueberrySmoothie,
     category: "smoothie",
     composition: "Черника, голубика, йогурт, мёд",
     calories: 170,
@@ -285,7 +323,7 @@ export const drinks = [
     price: 7.0,
     volume: 0.4,
     description: "Освежающий безалкогольный напиток с мятой и лаймом",
-    image: "/img/mohito.png",
+    image: mohito,
     category: "soft",
     composition: "Мята, лайм, содовая, сироп",
     calories: 90,
@@ -296,7 +334,7 @@ export const drinks = [
     price: 6.0,
     volume: 0.4,
     description: "Домашний лимонад из лимонов и мяты",
-    image: "/img/lemonade.png",
+    image: lemonade,
     category: "soft",
     composition: "Лимон, мята, сахар, вода",
     calories: 100,
@@ -307,7 +345,7 @@ export const drinks = [
     price: 7.0,
     volume: 0.4,
     description: "Ягодный лимонад из свежей малины",
-    image: "/img/raspberry-lemonade.png",
+    image: raspberryLemonade,
     category: "soft",
     composition: "Малина, лимон, мята, вода",
     calories: 110,
@@ -318,7 +356,7 @@ export const drinks = [
     price: 7.0,
     volume: 0.4,
     description: "Сладкий лимонад из клубники с базиликом",
-    image: "/img/strawberry-lemonade.png",
+    image: strawberryLemonade,
     category: "soft",
     composition: "Клубника, базилик, лимон, вода",
     calories: 105,
@@ -329,7 +367,7 @@ export const drinks = [
     price: 6.5,
     volume: 0.4,
     description: "Охлаждённый чай со вкусом персика",
-    image: "/img/peach-icetea.png",
+    image: peachIcetea,
     category: "soft",
     composition: "Чёрный чай, персиковый сироп, лёд",
     calories: 90,
@@ -340,7 +378,7 @@ export const drinks = [
     price: 6.0,
     volume: 0.4,
     description: "Охлаждённый чай с лимоном и мятой",
-    image: "/img/lemon-icetea.png",
+    image: lemonIcetea,
     category: "soft",
     composition: "Чёрный чай, лимон, мята, лёд",
     calories: 80,
@@ -351,7 +389,7 @@ export const drinks = [
     price: 8.0,
     volume: 0.3,
     description: "Свежевыжатый апельсиновый сок",
-    image: "/img/orange-juice.png",
+    image: orangeJuice,
     category: "soft",
     composition: "Апельсин",
     calories: 120,
@@ -362,7 +400,7 @@ export const drinks = [
     price: 7.5,
     volume: 0.3,
     description: "Свежевыжатый яблочный сок",
-    image: "/img/apple-juice.png",
+    image: appleJuice,
     category: "soft",
     composition: "Яблоко",
     calories: 110,
@@ -373,7 +411,7 @@ export const drinks = [
     price: 8.0,
     volume: 0.4,
     description: "Классический молочный коктейль с мороженым",
-    image: "/img/milkshake.png",
+    image: milkshake,
     category: "soft",
     composition: "Молоко, ванильное мороженое",
     calories: 280,
@@ -384,7 +422,7 @@ export const drinks = [
     price: 8.5,
     volume: 0.4,
     description: "Шоколадный молочный коктейль с мороженым",
-    image: "/img/chocolate-milkshake.png",
+    image: chocolateMilkshake,
     category: "soft",
     composition: "Молоко, шоколадное мороженое, шоколадный сироп",
     calories: 320,
@@ -395,7 +433,7 @@ export const drinks = [
     price: 7.5,
     volume: 0.3,
     description: "Густой горячий шоколад со взбитыми сливками",
-    image: "/img/hot-chocolate.png",
+    image: hotChocolate,
     category: "coffee",
     composition: "Молоко, шоколад, взбитые сливки",
     calories: 250,
@@ -406,7 +444,7 @@ export const drinks = [
     price: 6.5,
     volume: 0.3,
     description: "Ароматный какао с молоком и маршмэллоу",
-    image: "/img/cocoa.png",
+    image: cocoa,
     category: "coffee",
     composition: "Какао-порошок, молоко, сахар",
     calories: 200,
